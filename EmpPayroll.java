@@ -7,17 +7,16 @@ class Employee {
     String designation;
     double weeklyearnings;
     double weeklysalary;
-    // Method to calculate bonus
     double calculateBonus() {
         return 0.0;
     }
-    // Display method to print employee information, weekly salary, and annual earnings
+   
     void display() {
         System.out.println("Employee ID: "+employeeId+"\nEmploye name: "+employeeName+
                 "\nDesignation: "
                 +designation+"\nWeekly Salary: "+weeklysalary+"\nAnnual Earnings: " +AnnualEarnings());
     }
-    // Method for calculating Annual earnings Assuming 52 weeks in a year
+    
     double AnnualEarnings() {
         return weeklyearnings * 52;
     }
@@ -28,7 +27,7 @@ class HourlyEmployee extends Employee {
     double hourlyRate;
     int hoursWorked;
 
-    // Parameterized constructor
+    
     HourlyEmployee(double hourlyRate, int hoursWorked) {
         this.hourlyRate = hourlyRate;
         this.hoursWorked = hoursWorked;
@@ -38,17 +37,17 @@ class HourlyEmployee extends Employee {
 }
 class SalariedEmployee extends Employee {
     double monthlySalary;
-    // Parameterized constructor
+    
     SalariedEmployee(double mt) {
         this.monthlySalary = mt;
         weeklysalary = monthlySalary / 4;
     }
-    // Display method to print monthly salary
+    
     void display() {
         super.display();
         System.out.println("Monthly salary: " + monthlySalary);
     }
-    // Method for calculating Annual earnings -12 months in a year
+    
     double AnnualEarnings() {
         return monthlySalary * 12;
     }
@@ -72,14 +71,13 @@ class ExecutiveEmployee extends SalariedEmployee {
         weeklyearnings += executiveBonus;
         return baseBonus + executiveBonus;
     }
-    // Display function that prints employee info by invoking super
-    // to call its parent class
+    
     void display() {
         super.display();
         System.out.println("Bonus Percentage: " + bonusPercentage);
         System.out.println("Weekly Earnings: " + weeklyearnings);
     }
-    // Method for calculating Annual earnings invoking above methods
+   
     double AnnualEarnings() {
         return super.AnnualEarnings() + calculateBonus() * 12;
     }
